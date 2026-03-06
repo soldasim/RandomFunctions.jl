@@ -1,0 +1,7 @@
+name = "RandomFunctions"
+uuid = "f691e67c-ae6c-4b3f-b48f-8c2467f6bc33"
+authors = ["Šimon Soldát"]
+version = "0.1.0"
+
+[compat]
+julia = "1.10"

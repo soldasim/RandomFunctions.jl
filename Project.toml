@@ -1,7 +1,17 @@
 name = "RandomFunctions"
 uuid = "f691e67c-ae6c-4b3f-b48f-8c2467f6bc33"
-authors = ["Šimon Soldát"]
 version = "0.1.0"
+authors = ["Šimon Soldát"]
+
+[deps]
+Distributions = "31c24e10-a181-5473-b8eb-7969acd0382f"
+KernelFunctions = "ec8451be-7e33-11e9-00cf-bbf324bd1392"
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 
 [compat]
+Distributions = "0.25.123"
+KernelFunctions = "0.10.67"
+LinearAlgebra = "1.12.0"
+Random = "1.11.0"
 julia = "1.10"

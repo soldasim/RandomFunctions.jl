@@ -71,6 +71,7 @@ See also [`FunctionData`](@ref) for the expected shapes of the input and output 
 abstract type OutputSampler end
 
 """
+    sample(sampler::BatchSampler) -> FunctionData
     sample(sampler::FunctionSampler, n_context::Int, n_target::Int, n_batch::Int) -> FunctionData
     sample(sampler::InputSampler, n_context::Int, n_target::Int, n_batch::Int) -> (x_context, x_target)
     sample(sampler::OutputSampler, x_context, x_target) -> (y_context, y_target)

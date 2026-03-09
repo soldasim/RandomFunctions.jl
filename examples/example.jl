@@ -23,20 +23,25 @@ output_sampler = GPSampler(
 )
 
 # Compose the samplers
-sampler = ComposedSampler(input_sampler, output_sampler)
+composed_sampler = ComposedSampler(input_sampler, output_sampler)
+
+# Wrap in BatchSampler
+# This will automatically sample the number of context and target points
+sampler = BatchSampler(
+    sampler = composed_sampler,
+    n_batch = 4,                                        # number of function samples
+    n_context_prior = DiscreteUniform(15, 25),          # 15-25 context points per sample
+    n_target_prior = Dirac(50)                          # exactly 50 target points per sample
+)
 
 # Sample function data
-n_context_points = 20   # number of context points per sample
-n_target_points = 50    # number of target points per sample
-n_samples = 4           # number of function samples
-
-data = RandomFunctions.sample(sampler, n_context_points, n_target_points, n_samples)
+data = RandomFunctions.sample(sampler)
 
 # Create visualization
 fig = Figure(size = (1200, 800))
 
 # Plot each sample in a separate subplot
-for i in 1:n_samples
+for i in 1:sampler.n_batch
     ax = Axis(fig[div(i-1, 2) + 1, mod(i-1, 2) + 1],
         xlabel = "x₁",
         ylabel = "x₂",
@@ -74,7 +79,5 @@ end
 display(fig)
 
 # Save the figure
-save("example_output.png", fig)
+save("examples/example_output.png", fig)
 println("Figure saved to example_output.png")
-
-

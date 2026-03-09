@@ -3,6 +3,7 @@ module RandomFunctions
 export sample
 export FunctionData
 export FunctionSampler, ComposedSampler
+export BatchSampler
 
 export GPSampler
 export ClusteredSampler
@@ -14,7 +15,7 @@ using Random
 
 include("types.jl")
 include("composed.jl")
-include("gaussian_process.jl")
-include("clustered.jl")
+include("batch.jl")
+include("samplers/include.jl")
 
-end
+end # module
